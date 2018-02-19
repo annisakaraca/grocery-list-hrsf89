@@ -26,11 +26,27 @@ class App extends React.Component {
         console.log(error);
       })
   }
+
+  addItemToList(description, quantity){
+    var context = this;
+    console.log(context);
+    axios.post('/list', {
+      id: context.state.list.length,
+      description: description,
+      quantity: quantity
+    })
+      .then((response) => {
+        this.setState({list: response.data});
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+  }
   
   render () {
     return (
       <div>
-        <AddGrocery />
+        <AddGrocery handleClick={this.addItemToList.bind(this)}/>
         <GroceryList list={this.state.list}/>
       </div>
     )
