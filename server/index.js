@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var db = require('../database/index.js')
 // var exampleData = require('../database/data.js');
 
 app.use(express.static(__dirname + '/../client/dist'));
@@ -18,12 +19,14 @@ app.get('/list', function(req, res) {
 })
 
 app.post('/list', function(req, res){
-  exampleData.push({
-    id: req.body.id,
-    quantity: req.body.quantity,
-    description: req.body.description
+  // exampleData.push({
+  //   id: req.body.id,
+  //   quantity: req.body.quantity,
+  //   description: req.body.description
+  // })
+  db.save(req.body, () => {
+    res.send('saved');
   })
-  res.send(exampleData);
 })
 
 
