@@ -15,7 +15,8 @@ let exampleData = [
 ];
 
 app.get('/list', function(req, res) {
-  res.send(exampleData);
+  db.findList((data) => res.send(data))
+  
 })
 
 app.post('/list', function(req, res){

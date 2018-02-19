@@ -26,18 +26,14 @@ var save = function(itemObj, callback) {
     console.log('saved item to list');
     callback();
   })
+};
+
+var findList = function(callback) {
+  Item.find(function (err, items) {
+    if (err) return console.error(err);
+    callback(items);
+  })
 }
 
-// var banana = new Item({
-//   description: 'Banana',
-//   quantity: 2
-// });
-
-// banana.save(function (err, banana) {
-//   if (err) return console.error(err);
-//   console.log('saved banana to list');
-// })
-
-
-
 module.exports.save = save;
+module.exports.findList = findList;
