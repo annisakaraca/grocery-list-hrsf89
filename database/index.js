@@ -24,7 +24,12 @@ var save = function(itemObj, callback) {
   newItem.save(function (err, item) {
     if (err) return console.error(err);
     console.log('saved item to list');
-    callback();
+    var newList;
+    findList((data) => {
+      newList = data;
+      callback(data);
+    })
+    // callback();
   })
 };
 

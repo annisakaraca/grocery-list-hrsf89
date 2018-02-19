@@ -25,8 +25,8 @@ app.post('/list', function(req, res){
   //   quantity: req.body.quantity,
   //   description: req.body.description
   // })
-  db.save(req.body, () => {
-    res.send('saved');
+  db.save(req.body, (data) => {
+    res.send(data);
   })
 })
 
